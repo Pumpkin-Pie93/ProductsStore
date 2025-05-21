@@ -2,11 +2,15 @@ import {createSlice} from "@reduxjs/toolkit"
 import {createAppAsyncThunk} from "@/utils/create-app-async-thunk"
 import {authApi, LoginParamsType} from "../api/authApi"
 
+const token = localStorage.getItem('token')
+
+const initialState = {
+  isLoggedIn: !!token,
+}
+
 const slice = createSlice({
   name: "auth",
-  initialState: {
-	isLoggedIn: false
-  },
+  initialState,
   reducers: {},
   extraReducers: builder => {
 	builder
@@ -20,10 +24,16 @@ const slice = createSlice({
 
 const login = createAppAsyncThunk<{ isLoggedIn: boolean }, { data: LoginParamsType }>(
   `auth/login`,
-  async (_, { rejectWithValue }) => {
+  async (arg, { rejectWithValue }) => {
 	try {
-	  await authApi.login({username:'john_doe', password:'pass123'})
-	  return {isLoggedIn:true}
+	  const res = await authApi.login(arg.data)
+	  const token = res.data.token
+	  if(token){
+		localStorage.setItem('token', token)
+		return {isLoggedIn:true}
+	  } else {
+		return rejectWithValue('Token not received')
+	  }
 	}
 	catch (error:any){
 	  return rejectWithValue(error.message || 'Ошибка логинизации');
