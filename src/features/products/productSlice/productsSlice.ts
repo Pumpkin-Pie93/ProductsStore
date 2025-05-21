@@ -5,12 +5,14 @@ import { createAppAsyncThunk } from '@/utils/create-app-async-thunk';
 
 interface ProductsState {
   items: Product[];
+  currentProduct: Product | null
   loading: boolean;
   error: string | null;
 }
 
 const initialState: ProductsState = {
   items: [],
+  currentProduct: null,
   loading: false,
   error: null,
 }
@@ -33,6 +35,11 @@ const slice = createSlice({
 		state.loading = false;
 		state.error = action.payload as string;
 	  })
+	  .addCase(getProductById.fulfilled,(state, action) => {
+	  state.loading = false
+		state.currentProduct = action.payload
+
+	})
   }
 })
 
@@ -51,7 +58,19 @@ export const getAllProducts = createAppAsyncThunk<Product[]>(
   }
 )
 
+export const getProductById = createAppAsyncThunk<Product, { id: number }>(
+  'products/getProductById',
+  async (arg, { rejectWithValue }) => {
+	try {
+	  const res = await productsApi.getProductById(arg.id)
+	  return res.data
+	} catch (error: any) {
+	  return rejectWithValue(error.message || 'Ошибка при загрузке товара');
+	}
+  }
+)
+
 export const productsReducer = slice.reducer
 export const productsActions = slice.actions
-export const productsThunks = {getAllProducts}
+export const productsThunks = {getAllProducts, getProductById}
 

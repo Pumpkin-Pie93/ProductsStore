@@ -1,13 +1,19 @@
 import type {Product} from "../types/productsApi.types.ts"
-import s from './Product.module.scss'
+import s from './ProductItem.module.scss'
 import clsx from "clsx"
+import {useNavigate} from "react-router-dom"
 
-const Product = (product:Product) => {
+const ProductItem = (product:Product) => {
   const {id, image, price, title, category, description} = product
   const normalizedCategory = category.toLowerCase().replace(/[^a-z0-9]/g, '_')
   const categoryClass = clsx(s.category, s[`category_${normalizedCategory}`])
+  const navigate = useNavigate()
+
+  const handleOpen = () => {
+	navigate(`/products/${id}`)
+  }
   return (
-	<div className={s.product}>
+	<div className={s.product} onClick={handleOpen}>
 	  <div className={s.productImageWrapper}>
 		<img alt="product image" src={image}/>
 	  </div>
@@ -26,4 +32,4 @@ const Product = (product:Product) => {
   )
 }
 
-export default Product
+export default ProductItem

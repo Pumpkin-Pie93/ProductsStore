@@ -1,11 +1,6 @@
-// import Product from "@/features/products/ui/Product"
+import {Product} from "../../features/products/ui/product/Product"
 
-export const ProductPage = (params:{id:number}) => {
-  const {id} = params
-  return (
-	<div>
-	  <h1>{id}</h1>
-	  {/*<Product />*/}
-	</div>
-  )
+const ProductPage = () => {
+  return <Product/>
 }
+export default ProductPage
