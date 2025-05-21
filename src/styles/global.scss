@@ -1,0 +1,19 @@
+@import 'variables';
+
+:root {
+  --primary-color: #007bff;
+  --secondary-color: #6c757d;
+  --background-color: #e7ecff;
+  --padding-s: 4px;
+  --padding-m: 8px;
+  --padding-l: 16px;
+  --padding-xl: 24px;
+  --font-family: Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  margin: 0 auto;
+  font-family:$font-family-base;
+  background-color: $background-color;
+  color: $text-color;
+}
