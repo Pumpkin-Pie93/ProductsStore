@@ -4,8 +4,8 @@ import {selectProducts} from "../productSlice/products.selectors"
 import {useActions} from "../../../hooks/useActions"
 import {useEffect} from "react"
 import s from "./ProductItem.module.scss"
-import { Product } from "../types/productsApi.types.js"
-import ProductItem from "./ProductItem.tsx"
+import { Product } from "../types/productsApi.types"
+import ProductItem from "./ProductItem"
 
 export const ProductsList = () => {
   const isLoggedIn = useSelector(selectorIsLoggedIn)
