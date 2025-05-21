@@ -36,10 +36,55 @@ const slice = createSlice({
 		state.error = action.payload as string;
 	  })
 	  .addCase(getProductById.fulfilled,(state, action) => {
-	  state.loading = false
+	    state.loading = false
 		state.currentProduct = action.payload
 
 	})
+	  // ADD
+	  .addCase(addNewProduct.fulfilled, (state, action) => {
+		state.items.unshift(action.payload)
+		state.loading = false
+	  })
+	  .addCase(addNewProduct.pending, (state) => {
+		state.loading = true
+		state.error = null
+	  })
+	  .addCase(addNewProduct.rejected, (state, action) => {
+		state.loading = false
+		state.error = action.payload as string
+	  })
+
+	  // UPDATE
+	  .addCase(updateProduct.fulfilled, (state, action) => {
+		const index = state.items.findIndex(item => item.id === action.payload.id)
+		if (index !== -1) {
+		  state.items[index] = action.payload
+		}
+		state.loading = false
+	  })
+	  .addCase(updateProduct.pending, (state) => {
+		state.loading = true
+		state.error = null
+	  })
+	  .addCase(updateProduct.rejected, (state, action) => {
+		state.loading = false
+		state.error = action.payload as string
+	  })
+
+	  // DELETE
+	  .addCase(deleteProduct.fulfilled, (state, action) => {
+		state.items = state.items.filter(item => item.id !== action.payload)
+		state.loading = false
+	  })
+	  .addCase(deleteProduct.pending, (state) => {
+		state.loading = true
+		state.error = null
+	  })
+	  .addCase(deleteProduct.rejected, (state, action) => {
+		state.loading = false
+		state.error = action.payload as string
+	  })
+
   }
 })
 
@@ -69,8 +114,49 @@ export const getProductById = createAppAsyncThunk<Product, { id: number }>(
 	}
   }
 )
+export const addNewProduct = createAppAsyncThunk<Product, Product>(
+  'products/addNewProduct',
+  async (productData, { rejectWithValue }) => {
+	try {
+	  const res = await productsApi.addNewProduct(productData)
+	  return res.data
+	} catch (error: any) {
+	  return rejectWithValue(error.message || 'Ошибка при добавлении товара')
+	}
+  }
+)
+
+export const updateProduct = createAppAsyncThunk<Product, Product>(
+  'products/updateProduct',
+  async (productData, { rejectWithValue }) => {
+	try {
+	  const res = await productsApi.updateProduct(productData)
+	  return res.data
+	} catch (error: any) {
+	  return rejectWithValue(error.message || 'Ошибка при обновлении товара')
+	}
+  }
+)
+
+export const deleteProduct = createAppAsyncThunk<number, number>(
+  'products/deleteProduct',
+  async (id, { rejectWithValue }) => {
+	try {
+	  await productsApi.deleteProduct(id)
+	  return id
+	} catch (error: any) {
+	  return rejectWithValue(error.message || 'Ошибка при удалении товара')
+	}
+  }
+)
 
 export const productsReducer = slice.reducer
 export const productsActions = slice.actions
-export const productsThunks = {getAllProducts, getProductById}
+export const productsThunks = {
+  getAllProducts,
+  getProductById,
+  deleteProduct,
+  addNewProduct,
+  updateProduct
+}
 

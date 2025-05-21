@@ -4,6 +4,8 @@ import { NotFoundPage } from '@/pages/notFoundPage/NotFoundPage'
 import ProductPage from '@/pages/productPage/ProductPage'
 import ProductsListPage from '@/pages/productsPage/ProductsListPage'
 import { Route, Routes, Navigate } from 'react-router-dom'
+import CartsPage from "../pages/cartsPage/CartsPage"
+import UsersPage from "../pages/usersPage/UsersPage"
 
 
 export const AppRoutes = ({ isLoggedIn }: { isLoggedIn: boolean }) => {
@@ -18,6 +20,14 @@ export const AppRoutes = ({ isLoggedIn }: { isLoggedIn: boolean }) => {
 	  <Route
 		path="/products/:id"
 		element={isLoggedIn ? <ProductPage /> : <Navigate to="/login" />}
+	  />
+	  <Route
+		path="/carts"
+		element={isLoggedIn ? <CartsPage /> : <Navigate to="/login" />}
+	  />
+	  <Route
+		path="/users"
+		element={isLoggedIn ? <UsersPage /> : <Navigate to="/login" />}
 	  />
 	  <Route path="*" element={<NotFoundPage />} />
 	</Routes>

@@ -3,9 +3,25 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 4px;
+  gap: 12px;
   background-color: $primary-color;
-  border: 1px solid $primary-color;
-  padding: $padding-s $padding-m;
+  border: 1px solid $secondary-color;
+  padding: $padding-l $padding-l;
   color: $text-color-primary;
+}
+.link {
+  text-decoration: none;
+  font-size: 18px;
+  color: #fffefe;
+  transition: color 0.2s;
+
+  &:hover {
+    color: #79a3e3;
+  }
+}
+
+.activeLink {
+  color: $secondary-color;
+  font-weight: bold;
+  border-bottom: 2px solid $secondary-color;
 }
