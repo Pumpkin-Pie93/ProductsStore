@@ -23,17 +23,18 @@ const slice = createSlice({
   reducers:{},
   extraReducers: builder => {
 	builder
+	  //GET
 	  .addCase(getAllProducts.pending, state => {
-		state.loading = true;
-		state.error = null;
+		state.loading = true
+		state.error = null
 	  })
 	  .addCase(getAllProducts.fulfilled, (state,action)=>{
          state.items = action.payload
 		state.loading = false
 	  })
 	  .addCase(getAllProducts.rejected, (state, action) => {
-		state.loading = false;
-		state.error = action.payload as string;
+		state.loading = false
+		state.error = action.payload as string
 	  })
 	  .addCase(getProductById.fulfilled,(state, action) => {
 	    state.loading = false

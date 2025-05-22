@@ -1,12 +1,14 @@
 import { useMemo } from "react"
 import {useAppDispatch} from "./useAppDispatch"
-import {authThunks} from "../features/login/authSlice/authSlice"
-import {productsThunks} from "../features/products/productSlice/productsSlice"
+import {authThunks} from "@/features/login/authSlice/authSlice"
+import {productsThunks} from "@/features/products/productSlice/productsSlice"
 import { ActionCreatorsMapObject, bindActionCreators } from "redux"
+import {cartsThunks} from "@/features/carts/cartsSlice/cartsSlice"
+import {usersThunks} from "@/features/users/usersSlice/usersSlice"
 
-// ❗ упаковываем actions и соответсвенно при вызове хука не нужно
+// ❗ упаковываем actions и соответственно при вызове хука не нужно
 // будет передавать actions
-const actionsAll = {...productsThunks, ...authThunks }
+const actionsAll = {...productsThunks, ...authThunks, ...cartsThunks, ...usersThunks }
 
 type AllActions = typeof actionsAll
 
