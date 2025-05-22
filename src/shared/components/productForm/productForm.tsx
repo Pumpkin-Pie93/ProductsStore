@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router-dom'
 import { useSelector } from "react-redux"
 import { selectProductError, selectProductLoading } from "@/features/products/productSlice/products.selectors"
 import { addNewProduct } from '@/features/products/productSlice/productsSlice'
+import placeholderImage from '@/assets/placeholder.png'
+
 import s from './productForm.module.scss'
 
 type AddProductFormProps = {
@@ -39,7 +41,7 @@ const AddProductForm = ({ onSuccess }: AddProductFormProps) => {
 
 	const productData = {
 	  ...form,
-	  // price: form.price.toString(),
+	  image: form.image || placeholderImage,
 	  id: 0,
 	}
 

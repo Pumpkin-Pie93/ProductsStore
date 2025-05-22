@@ -6,6 +6,7 @@ import { selectProductError, selectProductLoading } from "@/features/products/pr
 import s from '../productForm/productForm.module.scss'
 import type {Product} from "../../../features/products/types/productsApi.types.ts"
 import {updateProduct} from "../../../features/products/productSlice/productsSlice"
+import placeholderImage from '@/assets/placeholder.png'
 
 type AddProductFormProps = {
   onSuccess?: () => void
@@ -18,13 +19,6 @@ const UpdateProductForm = ({ onSuccess, prevProductInfo }: AddProductFormProps) 
   const loading = useSelector(selectProductLoading)
   const error = useSelector(selectProductError)
 
-  // const [form, setForm] = useState({
-  // title: '',
-  // price: '',
-  // description: '',
-  // category: '',
-  // image: '',
-  // })
   const [form, setForm] = useState({
 	title: prevProductInfo.title,
 	price: prevProductInfo.price,
@@ -49,6 +43,7 @@ const UpdateProductForm = ({ onSuccess, prevProductInfo }: AddProductFormProps) 
 	const productData = {
 	  ...form,
 	  price: priceNum,
+	  image: prevProductInfo.image || placeholderImage,
 	  id: prevProductInfo.id,
 	}
 
