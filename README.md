@@ -1,5 +1,9 @@
 # React + TypeScript + Vite
 
+#Fake login data: 
+username: 'mor_2314'
+password: '83r5^_'
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:
