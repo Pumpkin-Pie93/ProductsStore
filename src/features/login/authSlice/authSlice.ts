@@ -11,7 +11,12 @@ const initialState = {
 const slice = createSlice({
   name: "auth",
   initialState,
-  reducers: {},
+  reducers: {
+	logout: (state) => {
+	  localStorage.removeItem("token")
+	  state.isLoggedIn = false
+	},
+  },
   extraReducers: builder => {
 	builder
 	  .addCase(login.fulfilled, (state,action)=>{

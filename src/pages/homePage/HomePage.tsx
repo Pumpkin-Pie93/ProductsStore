@@ -1,9 +1,7 @@
+import Logout from "../../features/loguot/Logout"
+
 const HomePage = () => {
-  return (
-	<div>
-	  Home
-	</div>
-  )
+  return <Logout />
 }
 
 export default HomePage

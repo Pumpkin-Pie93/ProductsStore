@@ -1,0 +1,50 @@
+@import '/src/styles/_variables';
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  padding: 4px 8px;
+  background-color: #fff;
+  gap: 8px;
+  &:disabled {
+    opacity: 0.1;
+    cursor: auto;
+  }
+}
+
+.icon {
+  color: #999;
+  display: flex;
+  align-items: center;
+}
+
+.input {
+  flex: 1;
+  border: none;
+  outline: none;
+  padding: 8px;
+  font-size: 14px;
+  &:disabled {
+    opacity: 0.1;
+    cursor: auto;
+  }
+}
+
+.button {
+  background-color: $accent-color;
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: darken($accent-color, 10%);
+  }
+  &:disabled {
+    opacity: 0.1;
+    cursor: auto;
+  }
+}

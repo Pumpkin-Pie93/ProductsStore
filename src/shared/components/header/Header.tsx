@@ -5,17 +5,32 @@ import Modal from '../modal/Modal'
 import AddProductForm from '../productForm/productForm'
 import {PlusCircledIcon} from "@radix-ui/react-icons"
 import {Button} from "../button/Button"
+import {SearchInput} from "../searchInput/SearchInput"
+import {useActions} from "../../../hooks/useActions"
+import {clearCurrentProduct, getAllProducts } from '@/features/products/productSlice/productsSlice'
+import {useSelector} from "react-redux"
+import {selectorIsLoggedIn} from "../../../app/app-selectors"
 
 const Header = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
-
+  const { getProductById } = useActions()
+  const isLoggedIn = useSelector(selectorIsLoggedIn)
   const openModal = () => setIsModalOpen(true)
   const closeModal = () => setIsModalOpen(false)
+
+  const onSearchHandler = (value:number | null) => {
+	if (!value) {
+	  clearCurrentProduct()
+	  getAllProducts()  // очистка — показываем все товары
+	} else {
+	  getProductById({ id: value })
+	}
+  }
 
   return (
 	<div>
 	  <header className={s.header}>
-		<Button onClick={openModal}><PlusCircledIcon />add Product</Button>
+		<Button onClick={openModal} disabled={!isLoggedIn}><PlusCircledIcon />add Product</Button>
 		<NavLink
 		  to={"/"}
 		  className={({isActive}) => isActive ? s.activeLink : s.link}
@@ -35,7 +50,7 @@ const Header = () => {
 		  to={"/users"}
 		  className={({isActive}) => isActive ? s.activeLink : s.link}
 		>Users</NavLink>
-		<input type={'search'}/>
+		<SearchInput onSearch={onSearchHandler} disabled={!isLoggedIn}/>
 	  </header>
 	  {isModalOpen && (
 	  <Modal onClose={closeModal}>

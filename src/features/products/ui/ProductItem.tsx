@@ -11,6 +11,7 @@ import {DropdownMenuItem} from "@radix-ui/react-dropdown-menu"
 import {CrossCircledIcon, DotsHorizontalIcon, Pencil2Icon} from "@radix-ui/react-icons"
 import UpdateProductForm from "@/shared/components/updateProductForm/UpdateProductForm"
 import { Product } from '../types/productsApi.types'
+import {Button} from "../../../shared/components/button/Button"
 
 const ProductItem = (product:Product) => {
   const {id, image, price, title, category, description} = product
@@ -25,7 +26,7 @@ const ProductItem = (product:Product) => {
   }
   const openModal = () => setIsModalOpen(true)
   const closeModal = () => setIsModalOpen(false)
-  const handleDelete = (id:number) => {
+  const handleDelete = () => {
 	deleteProduct(id)
   }
 
@@ -58,12 +59,10 @@ const ProductItem = (product:Product) => {
 	  {isModalOpen && (
 		<Modal onClose={closeModal}>
 		  <div><p>{`Do you wont to delete product ${title}`}</p></div>
-		  <button onClick={(e) => {
-			e.stopPropagation()
-			handleDelete(id)
-		  }}>Yes
-		  </button>
-		  <button onClick={closeModal}>No</button>
+		  <div className={s.buttonsBlock}>
+			<Button onClick={handleDelete}>Yes</Button>
+			<Button variant={'secondary'} onClick={closeModal}>No</Button>
+		  </div>
 		</Modal>
 	  )}
 	  {isEditProductModalOpen && (

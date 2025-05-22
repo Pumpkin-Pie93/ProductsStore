@@ -1,6 +1,6 @@
 import {useSelector} from "react-redux"
 import {selectorIsLoggedIn} from "../../../app/app-selectors"
-import {selectProducts} from "../productSlice/products.selectors"
+import {selectProduct, selectProducts} from "../productSlice/products.selectors"
 import {useActions} from "../../../hooks/useActions"
 import {useEffect} from "react"
 import s from "./ProductItem.module.scss"
@@ -10,6 +10,7 @@ import ProductItem from "./ProductItem"
 export const ProductsList = () => {
   const isLoggedIn = useSelector(selectorIsLoggedIn)
   const products = useSelector(selectProducts)
+  const product = useSelector(selectProduct)
   const {getAllProducts} = useActions()
   useEffect(() => {
 	if(isLoggedIn){
@@ -18,9 +19,11 @@ export const ProductsList = () => {
   }, []);
   return (
 	<div className={s.productsWrapper}>
-	  {products.items.map((p: Product)=>{
-		return <ProductItem {...p} key={p.id}/>
-	  })}
+	  {product ? (
+		<ProductItem {...product} key={product.id}/>
+	  ) : (
+		products.items.map((p: Product) => <ProductItem {...p} key={p.id}/>)
+	  )}
 	</div>
   )
 }

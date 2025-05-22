@@ -7,6 +7,7 @@ import s from '../productForm/productForm.module.scss'
 import type {Product} from "../../../features/products/types/productsApi.types.ts"
 import {updateProduct} from "../../../features/products/productSlice/productsSlice"
 import placeholderImage from '@/assets/placeholder.png'
+import {Button} from "../button/Button"
 
 type AddProductFormProps = {
   onSuccess?: () => void
@@ -94,7 +95,7 @@ const UpdateProductForm = ({ onSuccess, prevProductInfo }: AddProductFormProps) 
 		/>
 	  </div>
 
-	  <button type="submit" disabled={loading}>Обновить товар</button>
+	  <Button variant={'secondary'} type="submit" disabled={loading}>Обновить товар</Button>
 	  {error && <p style={{color: 'red'}}>{error}</p>}
 	</form>
   )

@@ -11,6 +11,11 @@
   cursor: pointer;
   transition: all 0.3s ease;
 
+  &:disabled {
+    opacity: 0.2;
+    cursor: auto;
+  }
+
   &.primary {
     border: 1px solid $accent-color;
     color: $accent-color;

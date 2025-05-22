@@ -1,21 +1,26 @@
 import {useParams} from "react-router-dom"
-import {useSelector} from "react-redux"
+import {useDispatch, useSelector} from "react-redux"
 import {selectProduct} from "../../productSlice/products.selectors"
 import {useActions} from "../../../../hooks/useActions"
 import clsx from "clsx"
 import s from "./Product.module.scss"
 import {useEffect} from "react"
+import { clearCurrentProduct } from "../../productSlice/productsSlice"
 
 export const Product = () => {
   const { id } = useParams()
+  const dispatch = useDispatch()
   const numberId = Number(id)
   const currentProduct = useSelector(selectProduct)
   const {getProductById} = useActions()
   const normalizedCategory = currentProduct?.category.toLowerCase().replace(/[^a-z0-9]/g, '_')
   const categoryClass = clsx(s.itemCategory, s[`category_${normalizedCategory}`])
   useEffect(() => {
-	if(id){
+	if(id) {
 	  getProductById({id: numberId})
+	}
+	return () => {
+	  dispatch(clearCurrentProduct())
 	}
   }, []);
 

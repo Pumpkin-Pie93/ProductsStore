@@ -20,7 +20,11 @@ const initialState: ProductsState = {
 const slice = createSlice({
   name:'products',
   initialState,
-  reducers:{},
+  reducers:{
+	clearCurrentProduct(state) {
+	  state.currentProduct = null
+	},
+  },
   extraReducers: builder => {
 	builder
 	  //GET
@@ -152,7 +156,8 @@ export const deleteProduct = createAppAsyncThunk<number, number>(
 )
 
 export const productsReducer = slice.reducer
-export const productsActions = slice.actions
+export const {clearCurrentProduct} = slice.actions
+// export const productsActions = slice.actions
 export const productsThunks = {
   getAllProducts,
   getProductById,
