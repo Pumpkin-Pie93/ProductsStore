@@ -1,19 +1,20 @@
-@import 'variables';
-
-:root {
-  --primary-color: #007bff;
-  --secondary-color: #6c757d;
-  --background-color: #e7ecff;
-  --padding-s: 4px;
-  --padding-m: 8px;
-  --padding-l: 16px;
-  --padding-xl: 24px;
-  --font-family: Tahoma, Geneva, Verdana, sans-serif;
-}
+@import '_variables';
 
 body {
   margin: 0 auto;
-  font-family:$font-family-base;
+  font-family: $font-family-base;
   background-color: $background-color;
   color: $text-color;
+}
+
+#nprogress .spinner {
+  display: none !important;
+}
+
+#nprogress .bar {
+  background-color: $accent-color;
+}
+
+#nprogress .peg {
+  box-shadow: 0 0 10px $accent-color, 0 0 5px $accent-color;
 }

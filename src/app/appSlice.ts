@@ -1,4 +1,5 @@
 import { createSlice, isFulfilled, isPending, isRejected, PayloadAction } from "@reduxjs/toolkit"
+import NProgress from 'nprogress'
 
 const slice = createSlice({
   name: "app",
@@ -22,14 +23,16 @@ const slice = createSlice({
 	builder
 	  .addMatcher(isPending, (state) => {
 		state.status = "loading"
+		NProgress.start()
 	  })
 	  .addMatcher(isFulfilled, (state) => {
 		state.status = "succeeded"
+		NProgress.done()
 	  })
 	  .addMatcher(isRejected, (state, action: any) => {
 		state.status = "failed"
+		NProgress.done()
 		if (action.payload) {
-		  console.log(action.type)
 		  state.error = action.payload.messages[0]
 		} else {
 		  state.error = action.error.message ? action.error.message : "Some error occurred"
