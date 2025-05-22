@@ -1,4 +1,4 @@
-@import '/src/styles/_variables';
+@use '../../../styles/variables' as vars;
 
 .wrapper {
   display: flex;
@@ -33,7 +33,7 @@
 }
 
 .button {
-  background-color: $accent-color;
+  background-color: vars.$accent-color;
   color: #fff;
   border: none;
   padding: 6px 12px;
@@ -41,7 +41,7 @@
   cursor: pointer;
 
   &:hover {
-    background-color: darken($accent-color, 10%);
+    background-color: vars.$accent-color, 10%;
   }
   &:disabled {
     opacity: 0.1;

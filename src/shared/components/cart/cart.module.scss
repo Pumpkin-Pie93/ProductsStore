@@ -1,16 +1,16 @@
-@import '/src/styles/_variables';
+@use '../../../styles/variables' as vars;
 
 .cartWrapper {
   width: 300px;
   height: 250px;
-  border: 1px solid $secondary-color;
-  border-radius: $padding-l;
-  padding: 0 $padding-m;
+  border: 1px solid vars.$secondary-color;
+  border-radius: vars.$padding-l;
+  padding: 0 vars.$padding-m;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  gap: $padding-m;
+  gap: vars.$padding-m;
   background-color: white;
 }
 
@@ -19,11 +19,11 @@
   width: 100%;
   border-radius: 12px 12px 0 0;
   display: flex;
-  padding: $padding-m;
+  padding: vars.$padding-m;
   gap: 4px;
   justify-content: space-around;
-  background-color: $secondary-color;
-  color: $background-color;
+  background-color: vars.$secondary-color;
+  color: vars.$background-color;
 }
 
 .cartInfo {
@@ -35,11 +35,11 @@
 .productId {
   border-radius: 16px;
   padding: 16px;
-  background-color: $accent-color;
+  background-color: vars.$accent-color;
 }
 
 .quantity{
   padding: 16px;
-  background-color: $primary-color;
+  background-color: vars.$primary-color;
   border-radius: 16px;
 }

@@ -1,4 +1,4 @@
-@import '/src/styles/_variables';
+@use '/src/styles/variables' as vars;
 
 .productWrap {
   display: flex;
@@ -8,8 +8,8 @@
   border: 1px solid #ccc;
   border-radius: 20px;
   overflow: hidden;
-  background-color: $secondary-color;
-  box-shadow: 3px 3px 7px 0 $men-s-clothing;
+  background-color: vars.$secondary-color;
+  box-shadow: 3px 3px 7px 0 vars.$men-s-clothing;
 }
 
 .imageWrapper {
@@ -40,8 +40,8 @@
   padding: 20px;
   box-sizing: border-box;
   text-align: center;
-  background-color: $secondary-color;
-  color: $background-color;
+  background-color: vars.$secondary-color;
+  color: vars.$background-color;
 
   h4 {
     font-size: 24px;
@@ -79,23 +79,23 @@
   text-align: center;
 
   &.category_electronics {
-    background-color: $electronics;
+    background-color: vars.$electronics;
   }
 
   &.category_jewelery {
-    background-color: $jewelery;
+    background-color: vars.$jewelery;
   }
 
   &.category_men_s_clothing {
-    background-color: $men-s-clothing;
+    background-color: vars.$men-s-clothing;
   }
 
   &.category_women_s_clothing {
-    background-color: $women-s-clothing;
+    background-color: vars.$women-s-clothing;
   }
 
   &.category_unknown {
-    background-color: $other;
+    background-color: vars.$other;
   }
 }
 

@@ -1,4 +1,4 @@
-@import '../styles/_variables';
+@use '../styles/variables' as vars;
 
 .link {
   text-decoration: none;
@@ -12,7 +12,7 @@
 }
 
 .activeLink {
-  color: $secondary-color;
+  color: vars.$secondary-color;
   font-weight: bold;
-  border-bottom: 2px solid $secondary-color;
+  border-bottom: 2px solid vars.$secondary-color;
 }

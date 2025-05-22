@@ -1,4 +1,4 @@
-@import '/src/styles/_variables';
+@use '/src/styles/variables' as vars;
 
 .productsWrapper {
   display: flex;
@@ -18,9 +18,9 @@
   justify-content: space-between;
   width: 320px;
   height: 420px;
-  border: 1px solid $other;
+  border: 1px solid vars.$other;
   border-radius: 20px;
-  padding: $padding-xl;
+  padding: vars.$padding-xl;
   background-color: #ffffff;
   box-sizing: border-box;
   overflow: hidden;
@@ -112,23 +112,23 @@
   text-align: center;
 
   &.category_electronics {
-    background-color: $electronics;
+    background-color: vars.$electronics;
   }
 
   &.category_jewelery {
-    background-color: $jewelery;
+    background-color: vars.$jewelery;
   }
 
   &.category_men_s_clothing {
-    background-color: $men-s-clothing;
+    background-color: vars.$men-s-clothing;
   }
 
   &.category_women_s_clothing {
-    background-color: $women-s-clothing;
+    background-color: vars.$women-s-clothing;
   }
 
   &.category_unknown {
-    background-color: $other;
+    background-color: vars.$other;
   }
 }
 

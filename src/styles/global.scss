@@ -1,10 +1,21 @@
-@import '_variables';
+@use 'variables' as vars;
+
+:root {
+  --primary-color: #{vars.$primary-color};
+  --secondary-color: #{vars.$secondary-color};
+  --background-color: #{vars.$background-color};
+  --padding-s: 4px;
+  --padding-m: 8px;
+  --padding-l: 16px;
+  --padding-xl: 24px;
+  --font-family: Tahoma, Geneva, Verdana, sans-serif;
+}
 
 body {
   margin: 0 auto;
-  font-family: $font-family-base;
-  background-color: $background-color;
-  color: $text-color;
+  font-family: vars.$font-family-base;
+  background-color: vars.$background-color;
+  color: vars.$text-color;
 }
 
 #nprogress .spinner {
@@ -12,9 +23,9 @@ body {
 }
 
 #nprogress .bar {
-  background-color: $accent-color;
+  background: vars.$accent-color;
 }
 
 #nprogress .peg {
-  box-shadow: 0 0 10px $accent-color, 0 0 5px $accent-color;
+  box-shadow: 0 0 10px vars.$accent-color, 0 0 5px vars.$accent-color;
 }

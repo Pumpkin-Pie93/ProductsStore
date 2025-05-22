@@ -1,4 +1,4 @@
-@import '/src/styles/_variables';
+@use '../../../styles/variables' as vars;
 
 .dropdownMenu{
   display: flex;
@@ -10,11 +10,11 @@
   position: relative;
   padding: 4px;
   border-radius: 99999px;
-  border: 1px solid $secondary-color;
-  color: $secondary-color;
+  border: 1px solid vars.$secondary-color;
+  color: vars.$secondary-color;
   &:hover {
-    background-color: $secondary-color;
-    color: $background-color;
+    background-color: vars.$secondary-color;
+    color: vars.$background-color;
   }
 }
 
@@ -25,8 +25,8 @@
   margin-top: 10px;
   padding: 8px;
   border-radius: 8px;
-  background-color: $secondary-color;
-  color: $background-color;
+  background-color: vars.$secondary-color;
+  color: vars.$background-color;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -40,7 +40,7 @@
     transform: translateX(-50%);
     border-width: 6px;
     border-style: solid;
-    border-color: transparent transparent $secondary-color transparent;
+    border-color: transparent transparent vars.$secondary-color transparent;
   }
 }
 

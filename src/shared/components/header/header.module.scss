@@ -1,4 +1,4 @@
-@import '/src/styles/_variables';
+@use '../../../styles/variables' as vars;
 
 .header {
   margin-bottom: 20px;
@@ -6,11 +6,11 @@
   justify-content: center;
   align-items: center;
   gap: 24px;
-  background-color: $secondary-color;
+  background-color: vars.$secondary-color;
   box-shadow: #656565 0 1px 10px 1px;
   border-radius:  0 0 36px 36px;
-  padding: $padding-l $padding-l;
-  color: $text-color;
+  padding: vars.$padding-l vars.$padding-l;
+  color: vars.$text-color;
 }
 
 
@@ -24,11 +24,11 @@
 
   &:hover {
     opacity: 1;
-    color: $accent-color;
+    color: vars.$accent-color;
   }
 }
 
 .activeLink {
-  color: $accent-color;
+  color: vars.$accent-color;
   outline: none;
 }

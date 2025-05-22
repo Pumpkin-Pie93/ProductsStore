@@ -1,4 +1,4 @@
-@import '/src/styles/_variables';
+@use '/src/styles/variables' as vars;
 
 .userTable {
   width: 100%;
@@ -6,13 +6,13 @@
 }
 
 .userTable th, .userTable td {
-  border: 1px solid $secondary-color;
+  border: 1px solid vars.$secondary-color;
   padding: 8px;
   text-align: left;
 }
 
 .userTable th {
-  background-color: $secondary-color;
-  color: $background-color;
+  background-color: vars.$secondary-color;
+  color: vars.$background-color;
   font-weight: bold;
 }
