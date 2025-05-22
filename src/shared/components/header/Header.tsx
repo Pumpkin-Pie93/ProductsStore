@@ -7,21 +7,23 @@ import {PlusCircledIcon} from "@radix-ui/react-icons"
 import {Button} from "../button/Button"
 import {SearchInput} from "../searchInput/SearchInput"
 import {useActions} from "../../../hooks/useActions"
-import {clearCurrentProduct, getAllProducts } from '@/features/products/productSlice/productsSlice'
+import {clearCurrentProduct, getAllProducts} from '@/features/products/productSlice/productsSlice'
 import {useSelector} from "react-redux"
 import {selectorIsLoggedIn} from "../../../app/app-selectors"
+import { useAppDispatch } from '@/hooks/useAppDispatch'
 
 const Header = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
-  const { getProductById } = useActions()
+  const { getProductById,  } = useActions()
+  const dispatch = useAppDispatch()
   const isLoggedIn = useSelector(selectorIsLoggedIn)
   const openModal = () => setIsModalOpen(true)
   const closeModal = () => setIsModalOpen(false)
 
   const onSearchHandler = (value:number | null) => {
 	if (!value) {
-	  clearCurrentProduct()
-	  getAllProducts()  // очистка — показываем все товары
+	  dispatch(clearCurrentProduct())
+	  getAllProducts()
 	} else {
 	  getProductById({ id: value })
 	}

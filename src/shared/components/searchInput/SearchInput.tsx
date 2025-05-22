@@ -20,12 +20,7 @@ export const SearchInput: FC<Props> = (
   }) => {
   const [value, setValue] = useState('')
 
-  // const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-	// setValue(e.target.value)
-	// rest.onChange?.(e)
-  // }
-
-  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
 	const newValue = e.target.value
 	setValue(newValue)
 
