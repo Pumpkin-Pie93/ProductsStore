@@ -16,19 +16,12 @@ const AddProductForm = ({ onSuccess }: AddProductFormProps) => {
   const loading = useSelector(selectProductLoading)
   const error = useSelector(selectProductError)
 
-  // const [form, setForm] = useState({
-	// title: '',
-	// price: '',
-	// description: '',
-	// category: '',
-	// image: '',
-  // })
   const [form, setForm] = useState({
-	title: 'Women Bag',
-	price: '75',
-	description: 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don\'t look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn\'t anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet.',
-	category: 'women\'s clothing',
-	image: 'https://i.pinimg.com/736x/53/56/bf/5356bfbdee7ab2bb0dd2076bb5a408d8.jpg',
+	title: '',
+	price: 1,
+	description: '',
+	category: '',
+	image: '',
   })
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -38,16 +31,15 @@ const AddProductForm = ({ onSuccess }: AddProductFormProps) => {
   const onSubmit = async (e: React.FormEvent) => {
 	e.preventDefault()
 
-	// Проверяем, что цена — число
-	const priceNum = Number(form.price)
-	if (isNaN(priceNum)) {
-	  alert('Цена должна быть числом')
-	  return
-	}
+	// const priceNum = Number(form.price)
+	// if (isNaN(priceNum)) {
+	//   alert('Цена должна быть числом')
+	//   return
+	// }
 
 	const productData = {
 	  ...form,
-	  price: priceNum,
+	  // price: form.price.toString(),
 	  id: 0,
 	}
 
@@ -68,16 +60,15 @@ const AddProductForm = ({ onSuccess }: AddProductFormProps) => {
   return (
 	<form onSubmit={onSubmit} className={s.productForm}>
 	  <div className={s.formRow}><label htmlFor={"title"}>Title</label>
-		<input name="title" id="title" placeholder="Название" value={form.title} onChange={onChange}/>
+		<input name="title" id="title" placeholder="Название" value={form.title} onChange={onChange} required/>
 	  </div>
 		<div className={s.formRow}>
 		  <label htmlFor={"price"}>Price</label>
-		  <input name={'price'} id={"price"} placeholder={"Price"} value={form.price} onChange={onChange}/>
+		  <input name={'price'} type={'number'} id={"price"} placeholder={"Price"} value={form.price} onChange={onChange} required min={1}/>
 		</div>
 		<div className={s.formRow}>
 		  <label htmlFor={"category"}>Category </label>
 		  <select name={"category"} id={'category'} value={form.category} onChange={onChange}>
-
 			<option value="men's clothing">Men's clothing</option>
 			<option value="women's clothing">Women's clothing</option>
 			<option value="jewelery">Jewelery</option>

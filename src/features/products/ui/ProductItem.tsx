@@ -1,16 +1,23 @@
-import type {Product} from "../types/productsApi.types.ts"
 import s from './ProductItem.module.scss'
+import sDrop from '@/shared/components/dropdown/dropdown.module.scss'
 import clsx from "clsx"
 import {useNavigate} from "react-router-dom"
-import {useActions} from "../../../hooks/useActions"
+import {useActions} from "@/hooks/useActions"
 import {useState} from "react"
 import Modal from "@/shared/components/modal/Modal.js"
+import {Dropdown} from "@/shared/components/dropdown/Dropdown"
+import {DropdownContent, DropdownTrigger} from "@/shared/components/dropdown/Dropdown"
+import {DropdownMenuItem} from "@radix-ui/react-dropdown-menu"
+import {CrossCircledIcon, DotsHorizontalIcon, Pencil2Icon} from "@radix-ui/react-icons"
+import UpdateProductForm from "@/shared/components/updateProductForm/UpdateProductForm"
+import { Product } from '../types/productsApi.types'
 
 const ProductItem = (product:Product) => {
   const {id, image, price, title, category, description} = product
   const normalizedCategory = category.toLowerCase().replace(/[^a-z0-9]/g, '_')
   const categoryClass = clsx(s.category, s[`category_${normalizedCategory}`])
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isEditProductModalOpen, setIsEditProductModalOpen] = useState(false)
   const navigate = useNavigate()
   const {deleteProduct} = useActions()
   const handleOpen = () => {
@@ -24,9 +31,17 @@ const ProductItem = (product:Product) => {
 
   return (
 	<div className={s.product}>
-	  <button className={s.deleteBtn} onClick={openModal}>
-		✕
-	  </button>
+	  <div className={s.dropdownWrapper}>
+		<Dropdown>
+          <DropdownTrigger>
+            <DotsHorizontalIcon color={'#ccc'}/>
+           </DropdownTrigger>
+		  <DropdownContent >
+			<DropdownMenuItem onClick={openModal} className={sDrop.dropdownItem}><CrossCircledIcon/>Delete </DropdownMenuItem>
+			<DropdownMenuItem onClick={()=> setIsEditProductModalOpen(true)} className={sDrop.dropdownItem}><Pencil2Icon/>Edit </DropdownMenuItem>
+		  </DropdownContent>
+		</Dropdown>
+	  </div>
 	  <div className={s.productImageWrapper}>
 		<img alt="product image" src={image}/>
 	  </div>
@@ -49,6 +64,11 @@ const ProductItem = (product:Product) => {
 		  }}>Yes
 		  </button>
 		  <button onClick={closeModal}>No</button>
+		</Modal>
+	  )}
+	  {isEditProductModalOpen && (
+		<Modal onClose={()=> setIsEditProductModalOpen(false)}>
+		  <UpdateProductForm prevProductInfo={product} onSuccess={()=> setIsEditProductModalOpen(false)}/>
 		</Modal>
 	  )}
 	</div>
