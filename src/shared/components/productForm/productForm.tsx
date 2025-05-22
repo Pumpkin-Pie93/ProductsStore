@@ -7,6 +7,7 @@ import { addNewProduct } from '@/features/products/productSlice/productsSlice'
 import placeholderImage from '@/assets/placeholder.png'
 
 import s from './productForm.module.scss'
+import {Button} from "../button/Button"
 
 type AddProductFormProps = {
   onSuccess?: () => void
@@ -32,12 +33,6 @@ const AddProductForm = ({ onSuccess }: AddProductFormProps) => {
 
   const onSubmit = async (e: React.FormEvent) => {
 	e.preventDefault()
-
-	// const priceNum = Number(form.price)
-	// if (isNaN(priceNum)) {
-	//   alert('Цена должна быть числом')
-	//   return
-	// }
 
 	const productData = {
 	  ...form,
@@ -91,7 +86,7 @@ const AddProductForm = ({ onSuccess }: AddProductFormProps) => {
 		  />
 		</div>
 
-		<button type="submit" disabled={loading}>Добавить товар</button>
+		<Button variant={'secondary'} type="submit" disabled={loading}>Добавить товар</Button>
 		{error && <p style={{color: 'red'}}>{error}</p>}
 	</form>
 )

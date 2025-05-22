@@ -1,4 +1,6 @@
+import UsersList from "@/features/users/ui/UsersList"
+
 const UsersPage = () => {
-  return <div style={{ padding: 20 }}>👤 Users Page</div>
+    return <UsersList />
 }
 export default UsersPage

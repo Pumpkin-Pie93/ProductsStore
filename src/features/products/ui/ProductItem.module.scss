@@ -1,3 +1,5 @@
+@import '/src/styles/_variables';
+
 .productsWrapper {
   display: flex;
   margin: 10px;
@@ -16,16 +18,13 @@
   justify-content: space-between;
   width: 320px;
   height: 420px;
-  border: 1px solid #ccc;
+  border: 1px solid $other;
   border-radius: 20px;
-  padding: 24px;
+  padding: $padding-xl;
   background-color: #ffffff;
   box-sizing: border-box;
   overflow: hidden;
   cursor: pointer;
-  //&:hover .fullDescription {
-  //  opacity: 1;
-  //}
 }
 
 .fullDescription {
@@ -34,7 +33,6 @@
   left: 0;
   right: 0;
   height: 0;
-  //height: 15%;
   background-color: rgba(0, 0, 0, 0.85);
   color: white;
   padding: 12px;
@@ -59,32 +57,12 @@
   align-items: center;
 }
 
-.deleteBtn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 20px;
-  padding: 2px 10px;
-  font-size: 12px;
-  border: none;
-  border-radius: 4px;
-  background-color: #fa6c6d;
-  color: white;
-  cursor: pointer;
-  transition: background-color 0.4s;
-
-  &:hover {
-    background-color: #d32f2f;
-  }
-}
-
 .productImageWrapper {
   position: relative;
   width: 100%;
   height: 150px;
   overflow: hidden;
   border-radius: 16px;
-  cursor: pointer;
 
   img {
     width: 100%;
@@ -100,6 +78,10 @@
   font-weight: 600;
   text-align: center;
   word-wrap: break-word;
+  cursor: pointer;
+  &:hover{
+    opacity: 0.8;
+  }
 }
 
 .productFooter {
@@ -129,23 +111,23 @@
   text-align: center;
 
   &.category_electronics {
-    background-color: #007bff;
+    background-color: $electronics;
   }
 
   &.category_jewelery {
-    background-color: #c2185b;
+    background-color: $jewelery;
   }
 
   &.category_men_s_clothing {
-    background-color: #2e7d32;
+    background-color: $men-s-clothing;
   }
 
   &.category_women_s_clothing {
-    background-color: #9c27b0;
+    background-color: $women-s-clothing;
   }
 
   &.category_unknown {
-    background-color: #6c757d;
+    background-color: $other;
   }
 }
 

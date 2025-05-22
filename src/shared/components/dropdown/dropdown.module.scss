@@ -1,3 +1,5 @@
+@import '/src/styles/_variables';
+
 .dropdownMenu{
   display: flex;
   justify-content: center;
@@ -8,9 +10,11 @@
   position: relative;
   padding: 4px;
   border-radius: 99999px;
-  border: 1px solid #a9ace0;
+  border: 1px solid $secondary-color;
+  color: $secondary-color;
   &:hover {
-    background-color: #a9ace0;
+    background-color: $secondary-color;
+    color: $background-color;
   }
 }
 
@@ -21,7 +25,8 @@
   margin-top: 10px;
   padding: 8px;
   border-radius: 8px;
-  background-color: #a9ace0;
+  background-color: $secondary-color;
+  color: $background-color;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -35,7 +40,7 @@
     transform: translateX(-50%);
     border-width: 6px;
     border-style: solid;
-    border-color: transparent transparent #a9ace0 transparent;
+    border-color: transparent transparent $secondary-color transparent;
   }
 }
 

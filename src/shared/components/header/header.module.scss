@@ -1,0 +1,34 @@
+@import '/src/styles/_variables';
+
+.header {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  background-color: $secondary-color;
+  box-shadow: #656565 0 1px 10px 1px;
+  border-radius:  0 0 36px 36px;
+  padding: $padding-l $padding-l;
+  color: $text-color;
+}
+
+
+
+.link {
+  text-decoration: none;
+  opacity: 0.7;
+  font-size: 16px;
+  color: #cccccc;
+  transition: color 0.4s;
+
+  &:hover {
+    opacity: 1;
+    color: $accent-color;
+  }
+}
+
+.activeLink {
+  color: $accent-color;
+  outline: none;
+}

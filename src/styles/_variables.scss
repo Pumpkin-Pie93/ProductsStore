@@ -1,14 +1,22 @@
-// Цвета
-$primary-color: #aaade1;
-$secondary-color: #76678f;
-$background-color: #e7ecff;
-$text-color: #000000;
-$text-color-primary: #54a5ff;
+// Цвета основные
+$primary-color: #3fb0ac;
+$secondary-color: #173e43;
+$background-color: #dddfd4;
+$accent-color: #fae596;
+$text-color: #1b1919;
+
+// Цвета дополнительные
+$men-s-clothing: #536859;
+$jewelery: #df8941;
+$electronics: #66b1cb;
+$women-s-clothing: #e0b8c3;
+$other: #cdc4bd;
 
 // Отступы
 $padding-s: 2px;
 $padding-m: 8px;
 $padding-l: 16px;
+$padding-xl: 24px;
 
 // Шрифты
 $font-family-base: Tahoma, Geneva, Verdana, sans-serif;

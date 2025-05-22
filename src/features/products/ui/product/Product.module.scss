@@ -1,3 +1,5 @@
+@import '/src/styles/_variables';
+
 .productWrap {
   display: flex;
   width: 860px;
@@ -6,7 +8,8 @@
   border: 1px solid #ccc;
   border-radius: 20px;
   overflow: hidden;
-  background-color: #aaade1;
+  background-color: $secondary-color;
+  box-shadow: 3px 3px 7px 0 $men-s-clothing;
 }
 
 .imageWrapper {
@@ -37,7 +40,8 @@
   padding: 20px;
   box-sizing: border-box;
   text-align: center;
-  background-color: #aaade1;
+  background-color: $secondary-color;
+  color: $background-color;
 
   h4 {
     font-size: 24px;
@@ -75,23 +79,23 @@
   text-align: center;
 
   &.category_electronics {
-    background-color: #007bff;
+    background-color: $electronics;
   }
 
   &.category_jewelery {
-    background-color: #c2185b;
+    background-color: $jewelery;
   }
 
   &.category_men_s_clothing {
-    background-color: #2e7d32;
+    background-color: $men-s-clothing;
   }
 
   &.category_women_s_clothing {
-    background-color: #9c27b0;
+    background-color: $women-s-clothing;
   }
 
   &.category_unknown {
-    background-color: #6c757d;
+    background-color: $other;
   }
 }
 

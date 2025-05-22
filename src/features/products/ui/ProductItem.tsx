@@ -34,7 +34,7 @@ const ProductItem = (product:Product) => {
 	  <div className={s.dropdownWrapper}>
 		<Dropdown>
           <DropdownTrigger>
-            <DotsHorizontalIcon color={'#ccc'}/>
+            <DotsHorizontalIcon />
            </DropdownTrigger>
 		  <DropdownContent >
 			<DropdownMenuItem onClick={openModal} className={sDrop.dropdownItem}><CrossCircledIcon/>Delete </DropdownMenuItem>

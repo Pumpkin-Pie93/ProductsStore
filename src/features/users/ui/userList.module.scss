@@ -1,0 +1,18 @@
+@import '/src/styles/_variables';
+
+.userTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.userTable th, .userTable td {
+  border: 1px solid $secondary-color;
+  padding: 8px;
+  text-align: left;
+}
+
+.userTable th {
+  background-color: $secondary-color;
+  color: $background-color;
+  font-weight: bold;
+}
